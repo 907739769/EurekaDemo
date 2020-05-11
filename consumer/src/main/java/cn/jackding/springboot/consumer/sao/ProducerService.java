@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Version 1.0.0
  */
 @FeignClient(value = "eureka-client-producer",fallback = ProducerFallback.class)
+//@FeignClient(value = "eureka-client-producer")
 public interface ProducerService {
 
-    @PostMapping("/test/hello")
+    @PostMapping("/test/helloPr")
     String hello(@RequestParam String name);
 
 }

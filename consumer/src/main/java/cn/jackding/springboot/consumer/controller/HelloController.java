@@ -27,7 +27,7 @@ public class HelloController {
 
     @PostMapping("/helloCu")
     public String helloCu(@RequestParam String name) {
-        String hello = "Hello " + name + " !!";
+        String hello = "Hello " + name + " from consumer !";
         System.out.println(hello);
         return hello;
     }

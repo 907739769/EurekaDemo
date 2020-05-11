@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "eureka-client-consumer",fallback = ConsumerFallback.class)
 public interface ConsumerService {
     @PostMapping("/cu/helloCu")
-    String helloCu(@RequestParam String name);
+    String hello(@RequestParam String name);
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Component
 public class ConsumerFallback implements ConsumerService {
     @Override
-    public String helloCu(@RequestParam String name) {
+    public String hello(@RequestParam String name) {
         String helloFail = "Hello " + name + " Fail !!";
         System.out.println(helloFail);
         return helloFail;

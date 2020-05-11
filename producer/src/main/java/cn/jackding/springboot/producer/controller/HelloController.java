@@ -20,16 +20,21 @@ public class HelloController {
     @Resource
     private ConsumerService consumerService;
 
-    @PostMapping("/hello")
-    public String hello(@RequestParam String name) {
-        String hello="Hello "+name+" !";
+    @PostMapping("/helloPr")
+    public String helloPr(@RequestParam String name) {
+        String hello="Hello "+name+" from producer !";
         System.out.println(hello);
+//        try {
+//            Thread.sleep(25000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return hello;
     }
 
-    @PostMapping("/helloPr")
-    public String helloPr(@RequestParam String name) {
-       return consumerService.helloCu(name);
+    @PostMapping("/hello")
+    public String hello(@RequestParam String name) {
+       return consumerService.hello(name);
     }
 
 }
