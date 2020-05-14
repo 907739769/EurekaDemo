@@ -1,2 +1,2 @@
-# EurekaDemo
- 
+#  Spring Cloud Demo
+
