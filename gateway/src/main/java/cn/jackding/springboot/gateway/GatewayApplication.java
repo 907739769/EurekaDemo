@@ -2,7 +2,6 @@ package cn.jackding.springboot.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -39,19 +38,10 @@ public class GatewayApplication {
                         .path("/eureka-client-consumer/**")
                         .filters(f -> f.requestRateLimiter(c -> {
                             c.setRateLimiter(redisRateLimiter());
-                            c.setKeyResolver(pathKeyResolver());
+                            c.setKeyResolver(hostKeyResolver());
                         }).stripPrefix(1))
                         .uri("lb://eureka-client-consumer"))
                 .build();
-    }
-
-    @Bean
-    public GlobalFilter customGlobalFilter(){
-        return ((exchange, chain) -> {
-           return chain.filter(exchange).then(Mono.fromRunnable(()->{
-               exchange.getAttributes().put("name","123456");
-           }));
-        });
     }
 
     @Bean
@@ -60,7 +50,7 @@ public class GatewayApplication {
     }
 
     @Bean
-    public KeyResolver pathKeyResolver(){
+    public KeyResolver hostKeyResolver(){
         return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getRemoteAddress()).getHostString());
     }
 
