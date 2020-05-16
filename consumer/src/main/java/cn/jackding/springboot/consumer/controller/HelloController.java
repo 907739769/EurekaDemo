@@ -20,6 +20,10 @@ public class HelloController {
 
     @Value("${test.hello}")
     private String name;
+    @Value("${test.common}")
+    private String common;
+    @Value("${test.sql}")
+    private String sql;
 
     @Resource
     private ProducerService producerService;
@@ -38,7 +42,7 @@ public class HelloController {
 
     @PostMapping("/helloTest")
     public String helloTest() {
-        String hello = "Hello " + name + " from consumer !";
+        String hello = sql+"#"+ name + "#"+common;
         System.out.println(hello);
         return hello;
     }
