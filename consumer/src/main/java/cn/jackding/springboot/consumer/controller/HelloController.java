@@ -1,6 +1,7 @@
 package cn.jackding.springboot.consumer.controller;
 
 import cn.jackding.springboot.consumer.sao.ProducerService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,9 @@ import javax.annotation.Resource;
 @RequestMapping("/cu")
 public class HelloController {
 
+    @Value("${test.hello}")
+    private String name;
+
     @Resource
     private ProducerService producerService;
 
@@ -27,6 +31,13 @@ public class HelloController {
 
     @PostMapping("/helloCu")
     public String helloCu(@RequestParam String name) {
+        String hello = "Hello " + name + " from consumer !";
+        System.out.println(hello);
+        return hello;
+    }
+
+    @PostMapping("/helloTest")
+    public String helloTest() {
         String hello = "Hello " + name + " from consumer !";
         System.out.println(hello);
         return hello;
