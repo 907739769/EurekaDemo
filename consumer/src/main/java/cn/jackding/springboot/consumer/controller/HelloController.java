@@ -30,6 +30,11 @@ public class HelloController {
 
     @PostMapping("/hello")
     public String hello(@RequestParam String name) {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return producerService.hello(name);
     }
 
