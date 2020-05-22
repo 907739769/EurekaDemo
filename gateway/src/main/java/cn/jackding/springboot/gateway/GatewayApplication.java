@@ -29,13 +29,13 @@ public class GatewayApplication {
 ////                .route("hystrix_fallback_route", r -> r.host("*.hystrixfallback.org")
 ////                        .filters(f -> f.hystrix(c -> c.setName("slowcmd").setFallbackUri("forward:/hystrixfallback")))
 ////                        .uri("http://httpbin.org"))
-////                .route("limit_route", r -> r
-////                        .path("/eureka-client-consumer/**")
-////                        .filters(f -> f.requestRateLimiter(c -> {
-////                            c.setRateLimiter(redisRateLimiter());
-////                            c.setKeyResolver(hostKeyResolver());
-////                        }).stripPrefix(1))
-////                        .uri("lb://eureka-client-consumer"))
+//                .route("limit_route", r -> r
+//                        .path("/eureka-client-consumer/**")
+//                        .filters(f -> f.requestRateLimiter(c -> {
+//                            c.setRateLimiter(redisRateLimiter());
+//                            c.setKeyResolver(hostKeyResolver());
+//                        }).stripPrefix(1))
+//                        .uri("lb://eureka-client-consumer"))
 //                .build();
 //    }
 
